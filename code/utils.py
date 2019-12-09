@@ -64,4 +64,4 @@ def sample_images(args,G_AB,G_BA, test_dataloader, epoch, batches_done):
 
     img_sample = torch.cat((real_X_A.data ,fake_X_B.data,recov_X_A.data,idt_Y_B.data,
                             real_Y_B.data ,fake_Y_A.data,recov_Y_B.data,idt_X_A.data), 0)
-    save_image(img_sample, './assets/%s-%s/%s/%s-%s.png' % (args.exp_name, args.dataset_name, args.img_result_dir, batches_done, epoch), nrow=4, normalize=True)
+    save_image(img_sample, './%s-%s/%s/%s-%s.png' % (args.exp_name, args.dataset_name, args.img_result_dir, batches_done, epoch), nrow=4, normalize=True)
