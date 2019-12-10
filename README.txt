@@ -5,6 +5,7 @@ This is project Style-Transfer-GAN (Project B) developed by team MatrixLoss comp
 Requirements 
 ============ 
 No additional package needed when runing on dsmlp server
+Please execute Original-paper-implementation/download_model.sh before running the notebook for section 1
 
 Code organization 
 ================= 
