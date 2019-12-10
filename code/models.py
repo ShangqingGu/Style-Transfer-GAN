@@ -134,10 +134,11 @@ def Create_nets(args):
 
     if args.epoch_start != 0:
         # Load pretrained models
-        generator_AB.load_state_dict(torch.load('saved_models/%s/G__AB_%d.pth' % (opt.dataset_name, opt.epoch)))
-        discriminator_B.load_state_dict(torch.load('saved_models/%s/D__B_%d.pth' % (opt.dataset_name, opt.epoch)))
-        generator_BA.load_state_dict(torch.load('saved_models/%s/G__BA_%d.pth' % (opt.dataset_name, opt.epoch)))
-        discriminator_A.load_state_dict(torch.load('saved_models/%s/D__A_%d.pth' % (opt.dataset_name, opt.epoch)))
+        generator_AB.load_state_dict(torch.load('./%s-%s/%s/G__AB_%d.pth' % (args.exp_name, args.dataset_name, args.model_result_dir, args.epoch_start)))
+        discriminator_B.load_state_dict(torch.load('./%s-%s/%s/D__B_%d.pth' % (args.exp_name, args.dataset_name, args.model_result_dir, args.epoch_start)))
+        generator_BA.load_state_dict(torch.load('./%s-%s/%s/G__BA_%d.pth' % (args.exp_name, args.dataset_name, args.model_result_dir, args.epoch_start)))
+        discriminator_A.load_state_dict(torch.load('./%s-%s/%s/D__A_%d.pth' % (args.exp_name, args.dataset_name, args.model_result_dir, args.epoch_start)))
+        
     else:
         # Initialize weights
         generator_AB.apply(weights_init_normal)
