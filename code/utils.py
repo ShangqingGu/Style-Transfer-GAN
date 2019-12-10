@@ -44,22 +44,16 @@ class LambdaLR():
 
 
 def sample_images(args,G_AB,G_BA, test_dataloader, epoch, batches_done):
-    """Saves a generated sample from the test set"""
     imgs = next(iter(test_dataloader))
     real_X_A = Variable(imgs['X'].type(torch.FloatTensor).cuda())
     real_Y_B = Variable(imgs['Y'].type(torch.FloatTensor).cuda())
 
-    ###############################################################################
-    #### You can regard the A and B as two defferent styles;
-    #### X and Y as two defferent images which in two defferent styles respectively
-    #### So the G_AB change the style from A to B; G_BA change the style from B to A
-    ################################################################################
-    fake_X_B = G_AB(real_X_A) # the real_X_A is in A style,so we change it into the B style
-    recov_X_A = G_BA(fake_X_B)# do reconstruction from fake B style
-    idt_Y_B = G_AB(real_Y_B)  # input the real_Y to make sure the G_AB has an identity mapping
+    fake_X_B = G_AB(real_X_A) 
+    recov_X_A = G_BA(fake_X_B)
+    idt_Y_B = G_AB(real_Y_B)
 
-    fake_Y_A = G_BA(real_Y_B) # the real_Y is in B style,so we change it into the A style
-    recov_Y_B = G_AB(fake_Y_A)# do reconstruction from fake A style
+    fake_Y_A = G_BA(real_Y_B)
+    recov_Y_B = G_AB(fake_Y_A)
     idt_X_A = G_BA(real_X_A)
 
     img_sample = torch.cat((real_X_A.data ,fake_X_B.data,recov_X_A.data,idt_Y_B.data,
