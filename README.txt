@@ -1,16 +1,26 @@
 Description 
 =========== 
-This is project Style-Transfer-GAN developed by team MatrixLoss composed of Shangqing Gu, ...
+This is project Style-Transfer-GAN (Project B) developed by team MatrixLoss composed of Shangqing Gu, Hejin Liu, Yi Hui Chen
 
 Requirements 
 ============ 
-Install package 'imageio' as follow:
-
+No additional package needed when runing on dsmlp server
 
 Code organization 
 ================= 
-demo.ipynb -- Run a demo of our code (reproduces Figure 3 of our report) 
-CycleGAN-train.ipynb -- Run the adversarial attack as described in Section 3 
-code/backprop.py -- Module implementing backprop 
-code/visu.py -- Module for visualizing our dataset 
-assets/model.dat -- Our model trained as described in Section 4
+Original-paper-implementation/* -- All the neural style transfer code for Section 1 of project B
+
+demo.ipynb -- Run a demo of our code to see two samples of our style transfer results
+CycleGAN-train-0.ipynb -- Run the GAN experiment 1 as described in Section 3 of project B
+CycleGAN-train-1.ipynb -- Run the GAN experiment 2 as described in Section 3 of project B
+CycleGAN-train-2.ipynb -- Run the GAN experiment 3 as described in Section 3 of project B
+code/models.py -- Module implementing GAN model structures
+code/optimizer.py -- Where we define loss functions and optimizer
+code/utils.py -- Helper functions to hold pool buffers
+
+Example for saved models:
+assets/Exp0-photo2vangogh/saved_models/D__A_10.pth -- Descriminator A trained for 10 epoch by experiment 1
+assets/Exp0-photo2vangogh/statistics/10 -- the statistics collected during train for 10th epoch by experiment 1
+
+Example for dataset images we used to train or test:
+datasets/photo2vangogh/trainA/10003197063_b94d37d2e8.jpg -- a training image in domain A (the landscape photo)
